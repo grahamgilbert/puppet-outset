@@ -26,7 +26,7 @@ class outset::setup {
   }
 
   if ! defined(File['/usr/local/outset/firstboot-packages']) {
-    file { '/usr/local/outset/usr/local/outset/firstboot-packages':
+    file { '/usr/local/outset/firstboot-packages':
       ensure => directory,
     }
   }
