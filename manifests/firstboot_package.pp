@@ -9,7 +9,7 @@ define outset::firstboot_package(
         fail('Invalid value for ensure')
     }
 
-    if $title !=~ ^.*\.(|pkg|PKG)$ {
+    if $title !~ ^.*\.(|pkg|PKG)$ {
         fail('Invalid value for title. Must end in .pkg')
     }
     
