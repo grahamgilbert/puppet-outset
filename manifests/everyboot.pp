@@ -9,7 +9,9 @@ define outset::everyboot(
         fail('Invalid value for ensure')
     }
 
-    if $title !~ ^.*\.(|PY|py|sh|SH|rb|RB)$ {
+    if $title =~ ^.*\.(|PY|py|sh|SH|rb|RB)$ {
+        notice('Valid script name')
+    } else{
         fail('Invalid value for title. Must end in .py, .sh or .rb')
     }
     
