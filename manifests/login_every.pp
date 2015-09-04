@@ -1,7 +1,8 @@
 define outset::login_every(
     $script,
     $priority = '10',
-    $ensure = 'present'
+    $ensure = 'present',
+    $type = 'file'
 ){
     require outset::setup
 
@@ -14,11 +15,22 @@ define outset::login_every(
     }
     
     if $ensure == 'present'{
-        file {"/usr/local/outset/login-every/${priority}-${title}":
-            source => $script,
-            owner  => 0,
-            group  => 0,
-            mode   => '0755',
+        if $type == 'file'{
+            file {"/usr/local/outset/login-every/${priority}-${title}":
+                source => $script,
+                owner  => 0,
+                group  => 0,
+                mode   => '0755',
+            }
+        }
+
+        if $type == 'template'{
+            file {"/usr/local/outset/login-every/${priority}-${title}":
+                content => $script,
+                owner  => 0,
+                group  => 0,
+                mode   => '0755',
+            }
         }
     }
 
