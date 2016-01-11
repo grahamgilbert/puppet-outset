@@ -13,23 +13,22 @@ class outset::setup {
     }
   }
 
-  if ! defined(File['/usr/local/outset/everyboot-scripts']) {
-    file { '/usr/local/outset/everyboot-scripts':
-      ensure => directory,
-    }
+  if versioncmp($outset_version, '1.0.3') >= 0 {
+      # These were changed in 1.0.3
+      if ! defined(File['/usr/local/outset/boot-every']) {
+        file { '/usr/local/outset/boot-every':
+          ensure => directory,
+        }
+      }
+  } else {
+      if ! defined(File['/usr/local/outset/everyboot-scripts']) {
+        file { '/usr/local/outset/everyboot-scripts':
+          ensure => directory,
+        }
+      }
   }
 
-  if ! defined(File['/usr/local/outset/firstboot-scripts']) {
-    file { '/usr/local/outset/firstboot-scripts':
-      ensure => directory,
-    }
-  }
 
-  if ! defined(File['/usr/local/outset/firstboot-packages']) {
-    file { '/usr/local/outset/firstboot-packages':
-      ensure => directory,
-    }
-  }
 
   if ! defined(File['/usr/local/outset/login-once']) {
     file { '/usr/local/outset/login-once':
