@@ -19,4 +19,8 @@ outset::login_once{'docker.sh':
     type    => 'template',
     priorty => 99
 }
+
+## Requirements
+
+This module requires the [stdlib module by Puppet Labs](https://forge.puppetlabs.com/puppetlabs/stdlib)
 ```
