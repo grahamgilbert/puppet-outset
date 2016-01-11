@@ -8,7 +8,8 @@ Facter.add(:outset_version) do
           if line.start_with?('__version__')
               out = line.chomp().sub('__version__ = ', '')
               out[0]=''
-              return out.chomp("'")
+              out.chomp("'")
+              break
           end
         end
       end
