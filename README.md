@@ -14,7 +14,7 @@ outset::everyboot{'disable_wifi.sh':
 Using a template, and a high priority value to make it run last (default is 10)
 
 ```
-outset::login_once{'docker.sh':
+outset::login_once{'dock.sh':
     script  => template('mac_base/dock/dock.sh.erb'),
     type    => 'template',
     priorty => 99
