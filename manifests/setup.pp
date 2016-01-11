@@ -20,6 +20,12 @@ class outset::setup {
           ensure => directory,
         }
       }
+
+      if ! defined(File['/usr/local/outset/on-demand']) {
+        file { '/usr/local/outset/on-demand':
+          ensure => directory,
+        }
+      }
   } else {
       if ! defined(File['/usr/local/outset/everyboot-scripts']) {
         file { '/usr/local/outset/everyboot-scripts':
