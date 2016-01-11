@@ -6,7 +6,7 @@ Facter.add(:outset_version) do
         File.open('/usr/local/outset/outset') do |file|
         file.each_line do |line|
           if line.start_with?('__version__')
-              out = line.str.sub('__version__ = ', '')
+              out = line.chomp().sub('__version__ = ', '')
               out[0]=''
               return out.chomp("'")
           end
