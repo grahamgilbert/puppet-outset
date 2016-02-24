@@ -12,25 +12,27 @@ class outset::setup {
       ensure => directory,
     }
   }
+  # Maybe we're not getting a version. Stops warnings.
+  if $outset_version {
+      if versioncmp($outset_version, '1.0.3') >= 0 {
+          # These were changed in 1.0.3
+          if ! defined(File['/usr/local/outset/boot-every']) {
+            file { '/usr/local/outset/boot-every':
+              ensure => directory,
+            }
+          }
 
-  if versioncmp($outset_version, '1.0.3') >= 0 {
-      # These were changed in 1.0.3
-      if ! defined(File['/usr/local/outset/boot-every']) {
-        file { '/usr/local/outset/boot-every':
-          ensure => directory,
-        }
-      }
-
-      if ! defined(File['/usr/local/outset/on-demand']) {
-        file { '/usr/local/outset/on-demand':
-          ensure => directory,
-        }
-      }
-  } else {
-      if ! defined(File['/usr/local/outset/everyboot-scripts']) {
-        file { '/usr/local/outset/everyboot-scripts':
-          ensure => directory,
-        }
+          if ! defined(File['/usr/local/outset/on-demand']) {
+            file { '/usr/local/outset/on-demand':
+              ensure => directory,
+            }
+          }
+      } else {
+          if ! defined(File['/usr/local/outset/everyboot-scripts']) {
+            file { '/usr/local/outset/everyboot-scripts':
+              ensure => directory,
+            }
+          }
       }
   }
 
