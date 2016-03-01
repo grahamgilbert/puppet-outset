@@ -13,7 +13,7 @@ class outset::setup {
     }
   }
   # Maybe we're not getting a version. Stops warnings.
-  if $outset_version.is_a(String) {
+  if is_string($outset_version) {
       if versioncmp($outset_version, '1.0.3') >= 0 {
           # These were changed in 1.0.3
           if ! defined(File['/usr/local/outset/boot-every']) {
